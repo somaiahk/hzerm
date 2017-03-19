@@ -1,0 +1,22 @@
+Get Person API URL: http://localhost:8080/hzerm/api/person/10001
+
+--> Create Schema with name as "tcp" in mysql database.
+
+--> Create a table:
+
+CREATE TABLE `person` (
+  `ID` int(11) NOT NULL DEFAULT '10001',
+  `FIRST_NAME` varchar(45) NOT NULL,
+  `LAST_NAME` varchar(45) NOT NULL,
+  `DATE_OF_BIRTH` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `PHONE_NUMBER` int(11) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `ID_UNIQUE` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+SELECT * FROM tcp.person;
+
+--> Insert record
+{"id":10001,"firstName":"Babu","dob":1489875112000,"phoneNumber":8122,"lastName":"Vayila"}
+
+--> Java Version: 8
+
