@@ -1,7 +1,5 @@
 package com.mckesson.dto.request;
 
-import java.util.Date;
-
 import com.mckesson.bean.Person;
 
 public class PersonDTO {
@@ -9,7 +7,7 @@ public class PersonDTO {
 	private Integer id;
 	private String firstName;
 	private String lastName;
-	private Date dob;
+	private java.sql.Timestamp dob;
 	private Integer phoneNumber;
 	
 	public Integer getId() {
@@ -30,11 +28,12 @@ public class PersonDTO {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	public Date getDob() {
+	
+	public java.sql.Timestamp getDob() {
 		return dob;
 	}
-	public void setDob(Date dob) {
-		this.dob = dob;
+	public void setDob(java.sql.Timestamp timestamp) {
+		this.dob = timestamp;
 	}
 	public Integer getPhoneNumber() {
 		return phoneNumber;
