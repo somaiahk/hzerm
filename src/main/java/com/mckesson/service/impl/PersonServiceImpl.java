@@ -19,7 +19,7 @@ public class PersonServiceImpl implements PersonService {
 	}
 
 	public PersonDTO getPerson(Integer id) {
-		return PersonDTO.mapToDto(personDao.getPerson(id));
+		return PersonDTO.mapToDto(personDao.get(id));
 	}
 
 }
