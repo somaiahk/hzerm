@@ -7,16 +7,18 @@ import com.mckesson.bean.Person;
 
 public class PersonDTO {
 
-	private Integer id;
+	private String id;
 	private String firstName;
 	private String lastName;
 	private Date dob;
 	private Integer phoneNumber;
+	private EducationInfoDTO educationInfo;	
+	private AddressInfoDTO addressInfo;
 	
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getFirstName() {
@@ -42,6 +44,18 @@ public class PersonDTO {
 	}
 	public void setPhoneNumber(Integer phoneNumber) {
 		this.phoneNumber = phoneNumber;
+	}	
+	public EducationInfoDTO getEducationInfo() {
+		return educationInfo;
+	}
+	public void setEducationInfo(EducationInfoDTO educationInfo) {
+		this.educationInfo = educationInfo;
+	}
+	public AddressInfoDTO getAddressInfo() {
+		return addressInfo;
+	}
+	public void setAddressInfo(AddressInfoDTO addressInfo) {
+		this.addressInfo = addressInfo;
 	}
 	
 	public static PersonDTO mapToDto(Person person) {
@@ -51,6 +65,8 @@ public class PersonDTO {
 		dto.setLastName(person.getLastName());
 		dto.setDob(person.getDob());
 		dto.setPhoneNumber(person.getPhoneNumber());
+		dto.setAddressInfo(AddressInfoDTO.mapToDTO(person.getAddressInfo()));
+		dto.setEducationInfo(EducationInfoDTO.mapToDTO(person.getEducationInfo()));
 		return dto;
 	}
 	public static Person mapToEntity(PersonDTO personDTO) {

@@ -4,24 +4,26 @@ import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.FetchType;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+/**
+ * @author Babu Vayila
+ * Dated : 15-Mar-2017
+ */
 @Entity
 @Table(name="PERSON")
-public class Person {
+public class Person extends SOXEntity {
 	
-	public Person(Integer id) {
+	private static final long serialVersionUID = 1L;
+
+	public Person(String id) {
 		this.id = id;
 	}
 	
 	public Person() {}
-
-	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)	
-	private Integer id;
 	
 	@Column(name="FIRST_NAME")
 	private String firstName;
@@ -35,12 +37,16 @@ public class Person {
 	@Column(name="PHONE_NUMBER")
 	private Integer phoneNumber;
 	
-	public Integer getId() {
-		return id;
-	}
-	public void setId(Integer id) {
-		this.id = id;
-	}
+	@OneToOne (fetch=FetchType.LAZY , optional=false)
+    @PrimaryKeyJoinColumn(name="EDUCATION_INFO_ID", referencedColumnName = "ID")
+	private EducationInfo educationInfo;
+	
+	@OneToOne (fetch=FetchType.LAZY , optional=false)
+    @PrimaryKeyJoinColumn(name="ADDRESS_INFO_ID", referencedColumnName = "ID")
+	private AddressInfo addressInfo;
+	
+	
+	
 	public String getFirstName() {
 		return firstName;
 	}
@@ -64,6 +70,22 @@ public class Person {
 	}
 	public void setPhoneNumber(Integer phoneNumber) {
 		this.phoneNumber = phoneNumber;
+	}
+
+	public EducationInfo getEducationInfo() {
+		return educationInfo;
+	}
+
+	public void setEducationInfo(EducationInfo educationInfo) {
+		this.educationInfo = educationInfo;
+	}
+
+	public AddressInfo getAddressInfo() {
+		return addressInfo;
+	}
+
+	public void setAddressInfo(AddressInfo addressInfo) {
+		this.addressInfo = addressInfo;
 	}
 	
 	

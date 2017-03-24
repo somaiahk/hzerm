@@ -13,7 +13,6 @@ import javax.ws.rs.core.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mckesson.bean.Person;
 import com.mckesson.dto.request.PersonDTO;
@@ -27,7 +26,6 @@ public class PersonResource {
 	private PersonService service;
 	
 	@POST
-	@ResponseBody
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response addPerson(Person person){
