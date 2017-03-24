@@ -1,5 +1,6 @@
 package com.mckesson.dto.request;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 import com.mckesson.bean.Person;
@@ -51,5 +52,15 @@ public class PersonDTO {
 		dto.setDob(person.getDob());
 		dto.setPhoneNumber(person.getPhoneNumber());
 		return dto;
+	}
+	public static Person mapToEntity(PersonDTO personDTO) {
+		Person person = new Person();
+		person.setId(personDTO.getId());
+		person.setFirstName(personDTO.getFirstName());
+		person.setLastName(personDTO.getLastName());
+		person.setDob((Timestamp) personDTO.getDob());
+		person.setPhoneNumber(personDTO.getPhoneNumber());
+		
+		return person;
 	}
 }

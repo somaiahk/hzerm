@@ -9,8 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class GenericDao<PK, T> implements BaseDao<PK, T> {
-	
+	public class GenericDao<PK, T> implements BaseDao<PK, T> {
+
 	private Class<T> entityClass;
 	
 	protected GenericDao() {
@@ -43,41 +43,36 @@ public class GenericDao<PK, T> implements BaseDao<PK, T> {
 	}
 
 	public void save(T entity) {
+		
 		getCurrentSession().save(entity);		
 	}
 
 	public T saveAndFlush(T entity) {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 
 	public void saveAll(T[] objects) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	public void saveAll(List<?> objects) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	public List<T> saveAndFlushAll(List<T> objects) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	public void persist(T entity) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	public boolean delete(PK key) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	public void deleteAll(T[] objects) {
-		// TODO Auto-generated method stub
 		
 	}
 
