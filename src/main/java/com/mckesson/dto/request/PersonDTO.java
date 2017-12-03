@@ -12,7 +12,6 @@ public class PersonDTO {
 	private String lastName;
 	private Date dob;
 	private Integer phoneNumber;
-	private Integer pancard;
 	public Integer getId() {
 		return id;
 	}
