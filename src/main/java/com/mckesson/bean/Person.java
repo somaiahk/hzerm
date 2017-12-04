@@ -23,11 +23,7 @@ public class Person {
     @GeneratedValue(strategy = GenerationType.AUTO)	
 	private Integer id;
 	
-	@Column(name="FIRST_NAME")
-	private String firstName;
 	
-	@Column(name="LAST_NAME")
-	private String lastName;
 	
 	@Column(name="DATE_OF_BIRTH")
 	private Timestamp dob;
