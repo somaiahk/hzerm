@@ -19,7 +19,7 @@ public class Person {
 	
 	public Person() {}
 
-	@Id
+	
     @GeneratedValue(strategy = GenerationType.AUTO)	
 	private Integer id;
 	
