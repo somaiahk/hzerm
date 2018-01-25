@@ -22,39 +22,45 @@ import com.mckesson.service.PersonService;
 @Component
 @Path("/person")
 public class PersonResource {
-	
+
 	@Autowired
 	private PersonService service;
-	
+
 	@POST
 	@ResponseBody
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response addPerson(Person person){
-		
+	public Response addPerson(Person person) {
+
 		System.out.println("Pesron name" + person.getFirstName());
-		return Response.ok().entity(service.createPerson(PersonDTO.mapToDto(person))).build();
-	}
-	
-	@GET
-	@Path("/{id}")
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response getPerson(@PathParam("id") Integer id){
-		return Response.ok().entity(service.getPerson(id)).build();		
+		return Response.ok()
+				.entity(service.createPerson(PersonDTO.mapToDto(person)))
+				.build();
 	}
 
+	/*
+	 * @GET
+	 * 
+	 * @Path("/{id}")
+	 * 
+	 * @Produces(MediaType.APPLICATION_JSON) public Response
+	 * getPerson(@PathParam("id") Integer id){ return
+	 * Response.ok().entity(service.getPerson(id)).build(); }
+	 */
 	@PUT
-	public Response updatePerson(Person person){
-	      service.update(person);
-	        return Response.ok().build();
-	    }
-	
-	@DELETE
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response deletePerson(Integer id){
-		 service.delete(id);
+	public Response updatePerson(Person person) {
+		service.update(person);
 		return Response.ok().build();
-		
 	}
-		
+
+	/*
+	 * @DELETE
+	 * 
+	 * @Produces(MediaType.APPLICATION_JSON) public Response
+	 * deletePerson(Integer id){ service.delete(id); return
+	 * Response.ok().build();
+	 * 
+	 * }
+	 */
+
 }

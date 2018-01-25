@@ -6,7 +6,8 @@ import com.mckesson.dto.request.PersonDTO;
 public interface PersonService {
 
 	String createPerson(PersonDTO personDTO);
-	PersonDTO getPerson(Integer id);
+
+	/* PersonDTO getPerson(Integer id); */
 	void update(Person person);
-	void delete(Integer personId);
+	/* void delete(Integer personId); */
 }

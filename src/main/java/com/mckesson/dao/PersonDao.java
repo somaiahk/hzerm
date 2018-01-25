@@ -2,7 +2,8 @@ package com.mckesson.dao;
 
 import com.mckesson.bean.Person;
 
+public interface PersonDao {
+	void createPerson(Person person);
 
-public interface PersonDao extends BaseDao<Integer, Person> {
-
+	void updatePerson(Person person);
 }

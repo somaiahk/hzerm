@@ -18,56 +18,62 @@ import com.mckesson.util.RestUtil;
  */
 @Service
 public class PersonServiceImpl implements PersonService {
-	
+
 	private Logger LOGG = Logger.getLogger(PersonServiceImpl.class);
-	
+
 	@Autowired
 	private PersonDao personDao;
-	
+
 	/**
 	 * create person info into database
 	 */
-	
+
 	public String createPerson(PersonDTO personDTO) {
-		
-		try{
-			personDao.save(PersonDTO.mapToEntity(personDTO));
-			
-			LOGG.debug(personDTO.getId()+ ": created Succesfully");
-			
-		} catch(HzermException e){
+
+		try {
+			personDao.createPerson(PersonDTO.mapToEntity(personDTO));
+
+			LOGG.debug(personDTO.getId() + ": created Succesfully");
+
+		} catch (HzermException e) {
 			LOGG.error(e);
-			throw new HzermException(e.getMessage(), "failure",500);
+			throw new HzermException(e.getMessage(), "failure", 500);
 		}
-		
+
 		LOGG.debug("Exit form createPerson() method");
 		return RestUtil.getSucessMsg();
 	}
-	
+
 	/**
-	 * get person Details from database 
+	 * get person Details from database
 	 */
-	
-	
-	public PersonDTO getPerson(Integer id) {
-		LOGG.debug("data is fetched..");
-		return PersonDTO.mapToDto(personDao.get(id));
-		
-	}
-	
+
+	/*
+	 * public PersonDTO getPerson(Integer id) { LOGG.debug("data is fetched..");
+	 * return PersonDTO.mapToDto(personDao.getPerson(id));
+	 * 
+	 * }
+	 */
+
 	/**
 	 * Update person info into database
 	 */
 	public void update(Person person) {
-		personDao.save(person);
-		LOGG.debug("person details updated....");
+		try {
+			personDao.updatePerson(person);
+			LOGG.debug("person details updated...." + person.getId());
+		} catch (HzermException e) {
+			LOGG.error("Person id can not found" + e);
+			new HzermException(e.getMessage(), "failed", 404);
+
+		}
+
 	}
-	
 	/**
 	 * delete person from database
 	 */
-	public void delete(Integer personId) {
-		personDao.delete(personId);
-		LOGG.debug("deleted succefully");
-	}
+	/*
+	 * public void delete(Integer personId) { personDao.delete(personId);
+	 * LOGG.debug("deleted succefully"); }
+	 */
 }
